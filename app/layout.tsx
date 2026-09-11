@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Clear Day — Confidence for them. Reassurance for you.",
+  title: "Clear Day",
   description: "Simple daily support for staying organised, connected and independent — with peace of mind for everyone who cares.",
   icons: { icon: "/clear-day-favicon.svg" },
   openGraph: {
