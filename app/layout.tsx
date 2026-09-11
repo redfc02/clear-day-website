@@ -4,7 +4,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Clear Day — Confidence for them. Reassurance for you.",
   description: "Simple daily support for staying organised, connected and independent — with peace of mind for everyone who cares.",
-  icons: { icon: "/favicon.svg" },
+  icons: { icon: "/clear-day-favicon.svg" },
   openGraph: {
     title: "Clear Day",
     description: "Confidence for them. Reassurance for you.",
