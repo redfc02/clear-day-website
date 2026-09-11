@@ -13,7 +13,7 @@ export function Header() {
         <a href="/discover" onClick={() => setMenuOpen(false)}>Discover</a>
         <a href="/founder-story" onClick={() => setMenuOpen(false)}>Founder story</a>
         <a href="/pricing" onClick={() => setMenuOpen(false)}>Pricing</a>
-        <a className="nav-contact" href="mailto:red@weareclearday.com">Contact us <span>↗</span></a>
+        <a className="nav-contact" href="mailto:red@weareclearday.com">Contact us <ArrowUpRightIcon aria-hidden="true" /></a>
       </nav>
     </header>
   );
