@@ -1,0 +1,11 @@
+allowBuilds:
+  esbuild: true
+  sharp: true
+  workerd: true
+onlyBuiltDependencies:
+  - esbuild
+  - sharp
+  - workerd
+  - '@cloudflare/workerd-darwin-64'
+  - '@rolldown/binding-darwin-x64'
+  - '@img/sharp-libvips-darwin-x64'
