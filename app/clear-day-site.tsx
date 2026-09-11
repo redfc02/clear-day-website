@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { ArrowUpRightIcon } from "@heroicons/react/24/outline";
 
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -19,7 +20,7 @@ export function Header() {
 }
 
 export function ContactSection() {
-  return <section className="contact-section"><p className="kicker light-text">We’re here to help</p><h2>Have a question<br/>about <em>Clear Day?</em></h2><a className="contact-button" href="mailto:red@weareclearday.com">Get in touch <span>↗</span></a><a className="email-link" href="mailto:red@weareclearday.com">red@weareclearday.com</a></section>;
+  return <section className="contact-section"><p className="kicker light-text">We’re here to help</p><h2>Have a question<br/>about <em>Clear Day?</em></h2><a className="contact-button" href="mailto:red@weareclearday.com">Get in touch <ArrowUpRightIcon aria-hidden="true" /></a></section>;
 }
 
 export function Footer() {
