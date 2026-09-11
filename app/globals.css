@@ -29,3 +29,6 @@
 .pricing-heading h2::after{content:"Pricing.";font-size:clamp(50px,5vw,74px);line-height:1}
 .hero-image-wrap img{object-position:center 28%;transform:scale(1.16)}
 .floating-card{display:none}
+.pricing-heading{display:block;margin:10px 0 28px;text-align:center}
+.pricing-heading>p{max-width:none;margin:0;white-space:nowrap}
+@media(max-width:760px){.pricing-heading>p{white-space:normal}}
