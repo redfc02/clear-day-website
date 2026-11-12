@@ -35,7 +35,7 @@
 
 /* Homepage product demos */
 .home-demo{min-width:0;scroll-margin-top:30px}
-.home-intro .intro-grid{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:6%;align-items:start}
+.home-intro .intro-grid{grid-template-columns:minmax(0,.7fr) minmax(0,1.3fr);gap:4%;align-items:start}
 .home-intro .intro-grid h2{font-size:clamp(43px,4.5vw,72px);margin:0;line-height:1.05}
 .demo-tabs{display:flex;gap:6px;border-bottom:1px solid var(--line);margin-bottom:18px}
 .demo-tabs button{appearance:none;display:flex;align-items:center;justify-content:center;gap:14px;padding:15px 12px;background:transparent;border:0;border-bottom:3px solid transparent;margin-bottom:-1px;color:#66736b;font-size:12px;font-weight:700;cursor:pointer}
@@ -55,3 +55,4 @@
 .discover-demos .demo-caption{display:grid;grid-template-columns:1fr 1fr;gap:8%;padding-top:24px}
 .discover-demos .demo-caption h3{font-size:17px}.discover-demos .demo-caption p{font-size:14px}
 @media(max-width:560px){.discover-demos .demo-tabs button{font-size:12px;padding:14px 10px;gap:7px}.discover-demos .demo-caption{grid-template-columns:1fr;gap:3px;padding-top:18px}.discover-demos .demo-caption h3{font-size:15px}.discover-demos .demo-caption p{font-size:13px}}
+
