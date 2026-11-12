@@ -6,12 +6,12 @@ const demos = [
   {
     id: "user",
     tab: "The user experience",
-    duration: "44 seconds",
+    duration: "40 seconds",
     title: "On the Clear Day device",
     description: "Daily plans, medication reminders, family messages and voice support, together on one screen.",
-    video: "/media/clear-day-user-experience.mp4",
+    video: "/media/clear-day-user-experience-v2.mp4",
     poster: "/media/clear-day-user-experience.webp",
-    captions: "/media/clear-day-user-experience.en.vtt",
+    captions: "/media/clear-day-user-experience-v2.en.vtt",
   },
   {
     id: "family",
