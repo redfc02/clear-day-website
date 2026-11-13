@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState, type KeyboardEvent } from "react";
+import { useEffect, useRef, useState, type KeyboardEvent } from "react";
 
 const demos = [
   {
@@ -28,6 +28,35 @@ const demos = [
 export function DemoVideos({ labelledBy = "home-demo-heading" }: { labelledBy?: string }) {
   const [selected, setSelected] = useState(0);
   const tabs = useRef<Array<HTMLButtonElement | null>>([]);
+
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video || !("IntersectionObserver" in window)) return;
+
+    let visible = false;
+    const updatePlayback = () => {
+      if (visible && !document.hidden && !video.ended) {
+        void video.play().catch(() => {
+          // Keep the native play button available if autoplay is blocked.
+        });
+      } else {
+        video.pause();
+      }
+    };
+    const observer = new IntersectionObserver(([entry]) => {
+      visible = entry.isIntersecting && entry.intersectionRatio >= 0.35;
+      updatePlayback();
+    }, { threshold: [0, 0.35] });
+    observer.observe(video);
+    document.addEventListener("visibilitychange", updatePlayback);
+    return () => {
+      observer.disconnect();
+      document.removeEventListener("visibilitychange", updatePlayback);
+      video.pause();
+    };
+  }, [selected]);
 
   function navigateTabs(event: KeyboardEvent<HTMLButtonElement>, index: number) {
     let next: number;
@@ -74,7 +103,7 @@ export function DemoVideos({ labelledBy = "home-demo-heading" }: { labelledBy?: 
         hidden={selected !== index}
       >
         {selected === index && <div className="demo-video-frame">
-          <video controls playsInline preload="none" poster={demo.poster}
+          <video ref={videoRef} controls muted playsInline preload="none" poster={demo.poster}
             aria-label={`${demo.tab}, narrated demo`}
             aria-describedby={`demo-description-${demo.id}`}>
             <source src={demo.video} type="video/mp4" />
