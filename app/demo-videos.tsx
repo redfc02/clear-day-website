@@ -36,10 +36,17 @@ export function DemoVideos({ labelledBy = "home-demo-heading" }: { labelledBy?: 
     if (!video || !("IntersectionObserver" in window)) return;
 
     let visible = false;
+    let disposed = false;
     const updatePlayback = () => {
       if (visible && !document.hidden && !video.ended) {
-        void video.play().catch(() => {
-          // Keep the native play button available if autoplay is blocked.
+        void video.play().catch((error: unknown) => {
+          if (disposed || !visible || document.hidden ||
+              !(error instanceof DOMException) || error.name !== "NotAllowedError") return;
+          // Browsers that block sound can still allow muted autoplay.
+          video.muted = true;
+          void video.play().catch(() => {
+            // Keep native controls available if autoplay is blocked entirely.
+          });
         });
       } else {
         video.pause();
@@ -52,6 +59,7 @@ export function DemoVideos({ labelledBy = "home-demo-heading" }: { labelledBy?: 
     observer.observe(video);
     document.addEventListener("visibilitychange", updatePlayback);
     return () => {
+      disposed = true;
       observer.disconnect();
       document.removeEventListener("visibilitychange", updatePlayback);
       video.pause();
@@ -103,7 +111,7 @@ export function DemoVideos({ labelledBy = "home-demo-heading" }: { labelledBy?: 
         hidden={selected !== index}
       >
         {selected === index && <div className="demo-video-frame">
-          <video ref={videoRef} controls muted playsInline preload="none" poster={demo.poster}
+          <video ref={videoRef} controls playsInline preload="none" poster={demo.poster}
             aria-label={`${demo.tab}, narrated demo`}
             aria-describedby={`demo-description-${demo.id}`}>
             <source src={demo.video} type="video/mp4" />
